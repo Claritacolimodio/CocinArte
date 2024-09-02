@@ -18,12 +18,25 @@ CREATE TABLE Recetas (
     ID_receta INT AUTO_INCREMENT PRIMARY KEY,
     Titulo VARCHAR(200) NOT NULL,
     Descripcion TEXT NOT NULL,
-    Ingredientes TEXT NOT NULL,
+    ID_Ingredientes INT,
     Instrucciones TEXT NOT NULL,
     Fecha_publicacion DATE NOT NULL,
     ID_usuario INT,
     FOREIGN KEY (ID_usuario) REFERENCES Usuarios(ID_usuario)
 );
+
+-- Tabla Intermedia Ingredientes
+CREATE TABLE Ingredientes (
+     ID_ingrediente INT AUTO_INCREMENT PRIMARY KEY,
+    Nombre VARCHAR(100) NOT NULL
+);
+
+-- Tabla Receta_Ingredientes
+CREATE TABLE Receta_Ingredientes (
+    ID_receta INT,
+    ID_ingrediente INT,
+    Cantidad VARCHAR(50),
+    PRIMARY KEY (ID_receta, ID_ingrediente),
 
 -- Tabla de Comentarios
 CREATE TABLE Comentarios (
